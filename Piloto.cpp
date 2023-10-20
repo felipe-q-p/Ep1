@@ -18,7 +18,7 @@ Sinal* Piloto::processar(Sinal* SinalIN){
     Integrador* int_interno = new Integrador();
     Sinal* SinalOUT = new Sinal(SinalIN -> getSequencia(), SinalIN->getComprimento());
     SinalOUT = amp_interno -> processar(SinalIN);
-    SinalOUT = int_interno -> processar(SinalIN);
+    SinalOUT = int_interno -> processar(SinalOUT);
     return SinalOUT;
 
 }

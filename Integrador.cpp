@@ -18,7 +18,6 @@ Sinal* Integrador::processar(Sinal* sinalIN){
     double soma = sequenciaInt[0];
     for (int i = 1;  i < sinalIN->getComprimento(); i++){
         soma += (sinalIN->getSequencia()[i]);
-        cout << soma << endl;
         sequenciaInt[i] = soma;
     }
     Sinal* sinalIntegral = new Sinal(sequenciaInt, sinalIN -> getComprimento());
