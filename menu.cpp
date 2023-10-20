@@ -16,7 +16,7 @@ int Simulink();
 int qualEntrada();
 double qualGanho();
 int qualOperacao();
-int oQueFazr();
+int oQueFazer();
 Sinal* novoSinal();
 void novaOperacao(Sinal *sinalIN);
 
@@ -33,12 +33,12 @@ void menu() {
     double a; // ganho
 
     i = Simulink(); // faz a primeira pergunta
-    cout << "OPÇÃO == " << i; 
+
 
 
     // PRIMEIRA OPCAO DO SIMULINK (quando escolhe o piloto automatico)
-    if (i = 1){
-        cout << "bbbbbbbbbb" << endl;
+    if (i == 1){
+
         Sinal* sinalIN = novoSinal(); //cria um sinal de acordo com a preferencia (constante ou rampa etc)
         a = qualGanho();
         ModuloRealimentado* pilotoAutomatico = new ModuloRealimentado(a);
@@ -49,7 +49,7 @@ void menu() {
 
 
     // SEGUNDA OPCAO DO SIMULINK (quando escolhe as proprias opcoes)
-    if (i = 2){
+    if (i == 2){
 
         /*
         cout<< endl;
@@ -83,7 +83,6 @@ int Simulink(){
     cout << "2) Sua propria sequencia de operacoes" << endl;
 
     cin >> i;
-    cout << "Você digitou " << i << endl;
     return i;
 }
 
@@ -97,9 +96,8 @@ int qualEntrada(){
     cout << "1) 5+3*cos(n*pi/8)" << endl;
     cout << "2) constante" << endl;
     cout << "3) rampa" << endl;
-    
+
     cin >> j;
-    cout << "Você digitou " << j << endl;
     return j;
 }
 
@@ -152,18 +150,24 @@ Sinal* novoSinal(){
 
         if (j == 1){
             int n; // se necessario seu n
-            cout << "Qual o valor de n" << endl;
             cin >> n;
-            // ... acho que tem que continuar pra fazer a conta com cosseno la
+
+            double* sequencia = new double[60];
+            for (int t=0; t<60; t++){
+                sequencia[t] = 5+(3*cos(n*M_PI/8));
+            }
+            Sinal* sinalIN = new Sinal(sequencia,60);
+            // criou o sinal da forma pedida
+
+           return  sinalIN;
         }
 
 
 
         if (j == 2){
-            int C = 0; // se necessario é a contante 
+            double C = 0; // se necessario é a contante 
             cout << "Qual o valor dessa constante?" << endl;
             cin >> C;
-            cout << "Você digitou " << C << endl;
             // guardou a contante
             
             double* sequencia = new double[60];
@@ -171,7 +175,6 @@ Sinal* novoSinal(){
                 sequencia[t] = C;
             }
             Sinal* sinalIN = new Sinal(sequencia,60);
-            cout << "aaaaaaaa" << endl;
             // criou o sinal da forma pedida
 
            return  sinalIN;
@@ -213,42 +216,42 @@ void novaOperacao(Sinal *sinalIN){
 
     operacao = qualOperacao();
 
-    if (operacao = 1){
+    if (operacao == 1){
         a = qualGanho();
         Amplificador* amp = new Amplificador(a); // cria um aplificador para dazer a operacao
-        amp->processar(sinalIN);
+        sinalIN = amp->processar(sinalIN);
         delete(amp);
     }
 
-    if (operacao = 2){
-        Sinal* sinalIN2 = novoSinal();
+    if (operacao == 2){
+        Sinal* sinalIN2;
         cout << "Informe mais um sinal para ser somado." << endl; // cria um novo sinal para ser somado
         sinalIN2 = novoSinal();
         Somador* som = new Somador();
-        som->processar(sinalIN, sinalIN2);  
+        sinalIN = som->processar(sinalIN, sinalIN2);  
         delete(som);
         delete(sinalIN2);
     }
 
-    if (operacao = 3){
+    if (operacao == 3){
         Derivador* d = new Derivador();
-        d->processar(sinalIN);
+        sinalIN = d->processar(sinalIN);
         delete(d);
     }
 
-    if (operacao = 4){
+    if (operacao == 4){
         Integrador* i = new Integrador();
-        i->processar(sinalIN);
+        sinalIN = i->processar(sinalIN);
         delete(i);
     }
 
     Fazer = oQueFazer(); // funcao para a pergunta final (fazer dnv ou terminar)
 
-    if (Fazer = 1){
+    if (Fazer == 1){
         novaOperacao(sinalIN);
     }
 
-    if (Fazer = 2){
+    if (Fazer == 2){
         sinalIN->imprimir("Resultado Final");
     }
 }
