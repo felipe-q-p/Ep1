@@ -25,7 +25,7 @@ int main(){
     /*ModuloRealimentado* pilotoAutomatico = new ModuloRealimentado(0.3);
     pilotoAutomatico -> processar(sinalEntrada) -> imprimir("Nome do Sinal");*/
 
-    /*menu();*/
+    menu();
     int numeroTeste1 = 27;
     int numeroTeste2 = 12;
 
@@ -49,18 +49,18 @@ int main(){
     sequencia2[11] = 5;
     sequencia2[12] = 1;
 
-    string nomeDoSinal = "abcd";
+    /*string nomeDoSinal = "abcd";
     int comprimento = numeroTeste1;
     int comprimento2 = numeroTeste2;
     Sinal *sinal = new Sinal(sequencia, comprimento);
-    sinal -> imprimir(nomeDoSinal);
+    sinal -> imprimir(nomeDoSinal);*/
 
     /*Amplificador *amplificador1 =  new Amplificador(0.3);
     amplificador1 -> processar(sinal) -> imprimir(nomeDoSinal);
     cout << amplificador1 -> processar(sinal) -> getSequencia()[1] << endl;*/
 
-    Piloto* piloto = new Piloto(0.3);
-    piloto -> processar(sinal) -> imprimir(nomeDoSinal);
+    /*Piloto* piloto = new Piloto(0.3);
+    piloto -> processar(sinal) -> imprimir(nomeDoSinal);*/
 
    /* ModuloRealimentado* pilotoAutomatico = new ModuloRealimentado(0.3);
     pilotoAutomatico -> processar(sinal) -> imprimir("Nome do Sinal");*/

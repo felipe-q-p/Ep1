@@ -188,11 +188,11 @@ Sinal* novoSinal(){
             cin >> inc;
             // guardou a inclinacao
 
-            double* sequencia = new double[60];
-            sequencia[0] = 0;
-            for (int t=1; t<60; t++){
-                sequencia[t] = sequencia[i-1] + inc ;
-            }
+            double *sequencia = new double[60];
+            for (int i = 0; i < 27; i++){
+            sequencia[i] = sequencia[i-1] + inc;
+        }
+    
             Sinal* sinalIN = new Sinal(sequencia,60);
             // criou o sinal da forma pedida
 
