@@ -149,12 +149,13 @@ Sinal* novoSinal(){
     j = qualEntrada();
 
         if (j == 1){
-            int n; // se necessario seu n
+            
+            double n = 0; // se necessario seu n
             cin >> n;
 
             double* sequencia = new double[60];
             for (int t=0; t<60; t++){
-                sequencia[t] = 5+(3*cos(n*M_PI/8));
+                sequencia[t] = 5+(3*cos(n*t*M_PI/8));
             }
             Sinal* sinalIN = new Sinal(sequencia,60);
             // criou o sinal da forma pedida
@@ -189,7 +190,7 @@ Sinal* novoSinal(){
             // guardou a inclinacao
 
             double *sequencia = new double[60];
-            for (int i = 0; i < 27; i++){
+            for (int i = 0; i < 60; i++){
             sequencia[i] = sequencia[i-1] + inc;
         }
     
