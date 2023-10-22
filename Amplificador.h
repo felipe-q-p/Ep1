@@ -1,5 +1,9 @@
+#ifndef AMPLIFICADOR_H
+#define AMPLIFICADOR_H
+
 #include <iostream>
 #include <string>
+#include "Sinal.h"
 using namespace std;
 
 class Amplificador{
@@ -13,3 +17,4 @@ class Amplificador{
     private:
     double ganho;
 };
+#endif
